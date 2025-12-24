@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const userList = [
   { userName: "rashedul", password: "1234" },
-  { userName: "Islam", password: "5678" },
+  { userName: "islam", password: "5678" },
   { userName: "abdullah", password: "9101" },
 ];
 
@@ -12,7 +12,7 @@ export const authOptions = {
   providers: [
     CredentialsProvider({
       // Sign in with name button
-      name: "Credentials",
+      name: "Sign in with email and password",
 
       //  form inputs
 
