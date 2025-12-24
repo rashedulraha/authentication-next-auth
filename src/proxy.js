@@ -18,7 +18,9 @@ export async function proxy(req) {
   );
 
   if (!isAuthenticated && isPrivateRoute) {
-    return NextResponse.redirect(new URL("/api/auth/signin", req.url));
+    const loginUrl = new URL("/api/auth/signin", req.url);
+    loginUrl.searchParams.set("callbackUrl", reqPath);
+    return NextResponse.redirect(loginUrl);
   }
 
   console.log(token);
@@ -35,5 +37,5 @@ export async function proxy(req) {
 // export default function proxy(request) { ... }
 
 export const config = {
-  matcher: "/private/:path*",
+  matcher: ["/private:path*", "/dashboard:path*", "/secret:path*"],
 };
