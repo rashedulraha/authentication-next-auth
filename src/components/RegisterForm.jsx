@@ -1,7 +1,9 @@
 "use client";
 
+import postUser from "@/actions/server/auth";
+
 const RegisterForm = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -15,7 +17,7 @@ const RegisterForm = () => {
       bloodgroup: form.bloodgroup.value,
     };
 
-    console.log("Submitted Data:", formData);
+    postUser(formData);
   };
 
   const inputClass =
@@ -103,8 +105,7 @@ const RegisterForm = () => {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full bg-gray-600 text-white py-2 rounded hover:bg-green-700 transition"
-      >
+        className="w-full bg-gray-600 text-white py-2 rounded hover:bg-green-700 transition">
         Register
       </button>
     </form>
