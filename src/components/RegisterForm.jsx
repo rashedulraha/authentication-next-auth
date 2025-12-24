@@ -17,7 +17,8 @@ const RegisterForm = () => {
       bloodgroup: form.bloodgroup.value,
     };
 
-    postUser(formData);
+    const result = await postUser(formData);
+    console.log(result.message);
   };
 
   const inputClass =
