@@ -2,9 +2,9 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const userList = [
-  { userName: "rashedul", password: "1234" },
-  { userName: "islam", password: "5678" },
-  { userName: "abdullah", password: "9101" },
+  { name: "rashedul", password: "1234" },
+  { name: "islam", password: "5678" },
+  { name: "abdullah", password: "9101" },
 ];
 
 export const authOptions = {
@@ -28,10 +28,10 @@ export const authOptions = {
       async authorize(credentials, req) {
         const { username, password } = credentials;
         //  my own login logic
-        const user = userList?.find((u) => u.userName === username);
+        const user = userList?.find((u) => u.name == username);
         if (!user) return null;
 
-        const isPasswordOk = user.password === password;
+        const isPasswordOk = user.password == password;
         if (isPasswordOk) return user;
 
         return null;
